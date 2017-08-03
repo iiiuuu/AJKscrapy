@@ -18,7 +18,7 @@ class AjkItem(scrapy.Item):
     # 楼盘价格（只是均价）
     price = Field()
     # 楼盘联系方式
-    telephone = Field()
+    # telephone = Field()
     # 楼盘链接
     detailUrl = Field()
 

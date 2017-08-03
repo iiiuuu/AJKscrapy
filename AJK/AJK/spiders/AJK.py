@@ -52,8 +52,8 @@ class AJK(scrapy.Spider):
                 else:
                     item['price'] = q.find(attrs={'class': 'favor-tag around-price'}).span.string + 'around'
                     print(q.find(attrs={'class': 'favor-tag around-price'}).span.string + 'around')
-                item['telephone'] = q.find(attrs={'class': 'tel'}).contents[1]
-                print(q.find(attrs={'class': 'tel'}).string)
+                # item['telephone'] = q.find(attrs={'class': 'tel'}).contents[1]
+                # print(q.find(attrs={'class': 'tel'}).string)
                 yield item
 
 
