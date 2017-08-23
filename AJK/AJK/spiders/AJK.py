@@ -44,7 +44,6 @@ class AJK(scrapy.Spider):
                 print(q.h3.a.string)
                 item['detailUrl'] = q.h3.a.get('href')
                 print(q.h3.a.get('href'))
-                item['locals'] = q.find(attrs={'class': 'address'}).a.string
                 print(q.find(attrs={'class': 'address'}).a.string)
                 if q.find(attrs={'class': 'price'}) != None:
                     item['price'] = q.find(attrs={'class': 'price'}).span.string
@@ -54,8 +53,14 @@ class AJK(scrapy.Spider):
                     print(q.find(attrs={'class': 'favor-tag around-price'}).span.string + 'around')
                 # item['telephone'] = q.find(attrs={'class': 'tel'}).contents[1]
                 # print(q.find(attrs={'class': 'tel'}).string)
-                yield item
+                yield scrapy.Request(url=q.h3.a.get('href'), callback=self.parse_item2)
 
-
-
-
+    def parse_item2(self, response):
+        html = response.body
+        item = response.meta['item']
+        start = response.body.find("lat:")
+        end = response.body.find("}")
+        local = html[start:end]
+        item['locals'] = local
+        print(local)
+        yield item

@@ -95,4 +95,4 @@ ITEM_PIPELINES = {
 MONGO_HOST = "127.0.0.1"  # 主机IP
 MONGO_PORT = 27017  # 端口号
 MONGO_DB = "sprider"  # 库名
-MONGO_COLL = ""  # collection名
+MONGO_COLL = "buildingInfo"  # collection名
